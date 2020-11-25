@@ -48,7 +48,9 @@ namespace Docker.Registry.DotNet.Authentication
                             this._password);
 
             //Set the header
-            request.Headers.Authorization = new AuthenticationHeaderValue(Schema, token.Token);
+            request.Headers.Authorization = new AuthenticationHeaderValue(Schema, this.GetToken(token));
         }
+
+        internal virtual string GetToken(OAuthToken token) => token.Token;
     }
 }
